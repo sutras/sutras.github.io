@@ -1,0 +1,141 @@
+<h1>Galaxy</h1>
+<iframe
+  src="https://ghbtns.com/github-btn.html?user=sutras&amp;repo=galaxy&amp;type=watch&amp;count=true&amp;size=large"
+  allowtransparency="true"
+  frameborder="0"
+  scrolling="0"
+  width="80"
+  height="30"
+></iframe>
+<iframe
+  src="https://ghbtns.com/github-btn.html?user=sutras&amp;repo=galaxy&amp;type=fork&amp;count=true&amp;size=large"
+  allowtransparency="true"
+  frameborder="0"
+  scrolling="0"
+  width="80"
+  height="30"
+></iframe>
+<h2>Galaxy</h2>
+<p>
+  Galaxy是一个与样式弱关联的解决网站绝大部分动效的js库。常见的动效有轮播图、跑马灯、标签切换、手风琴、滚动监听、菜单展示等等。
+</p>
+
+<h2>兼容性</h2>
+<ul>
+  <li>IE9+（含）</li>
+  <li>Chrome</li>
+  <li>Firefox</li>
+</ul>
+
+<h2>下载</h2>
+<p>
+  <a href="./assets/js/galaxy.min.js" class="btn btn-primary" download
+    >galaxy.min.js</a
+  >
+  <small><%= compressedSize %> (已压缩)</small>
+</p>
+<p>
+  <a href="./assets/js/galaxy.js" class="btn btn-default" download>galaxy.js</a>
+  <small><%= uncompressedSize %> (未压缩)</small>
+</p>
+
+<h2>用法</h2>
+<ol>
+  <li><p>首先加载库文件</p></li>
+  <pre>
+      <code lang="html">
+<!DOCTYPE html>
+<html>
+<head>
+  ...
+  <script src="./assets/js/galaxy.min.js"></script>
+  ...
+</head>
+<body>
+  ...
+</body>
+</html>
+      </code>
+    </pre>
+  <li>
+    <p>
+      编写HTML结构。轮播图在通常情况下的结构如下所示。HTML中的类名不是固定的。
+    </p>
+  </li>
+  <pre>
+      <code lang="html">
+<div class="carousel" id="usageDemo">
+  <ul class="carousel-wrapper">
+    <li class="carousel-slide">slide1</li>
+    <li class="carousel-slide">slide2</li>
+    <li class="carousel-slide">slide3</li>
+    <li class="carousel-slide">slide4</li>
+  </ul>
+  <div class="carousel-pagination"></div>
+  <a href="javascript:;" class="carousel-arrow carousel-prev">&lt;</a>
+  <a href="javascript:;" class="carousel-arrow carousel-next">&gt;</a>
+</div>
+      </code>
+    </pre>
+  <li>
+    <p>
+      添加css样式。galaxy只会添加必要的样式，其他样式需要用户自行添加。最好能做到即使不引入galaxy情况下，页面布局也不会乱，仅仅是没有动效。
+    </p>
+  </li>
+  <pre>
+      <code lang="html">
+<style>
+  .carousel{position:relative;width:100%;height:320px;margin:0 auto;overflow:hidden;}
+  .carousel-wrapper{position:relative;z-index:1;margin:0;padding:0;list-style:none;}
+  .carousel-pagination{position:absolute;bottom:20px;left:50%;z-index:2;height:12px;line-height:12px;padding:4px 8px;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);background-color:hsla(39,100%,10%,.3);border-radius:12px;white-space:nowrap;}
+  .carousel-pagination span{display:inline-block;width:12px;height:12px;margin:0 6px;border-radius:100%;background-color:hsla(39,100%,100%,.95);cursor:pointer;}
+  .carousel-pagination span.active{background-color:hsla(39,100%,10%,.95);}
+  .carousel-arrow{position:absolute;top:50%;z-index:2;margin-top:-30px;width:34px;height:60px;text-align:center;line-height:60px;color:#fff;text-decoration:none;background-color:rgba(0,0,0,.3);}
+  .carousel-arrow:hover{background-color:rgba(0,0,0,.6);}
+  .carousel-prev{left:0;background-position:0 17px;}
+  .carousel-next{right:0;background-position:right 17px;}
+</style>
+      </code>
+    </pre>
+  <li>
+    <p>初始化galaxy</p>
+  </li>
+  <pre>
+      <code lang="html">
+<script>
+  new galaxy.Carousel('#usageDemo', {
+    effect: 'slide',
+    resize: true,
+    wrapper: '.carousel-wrapper',
+    navigation: {
+      prevEl: '.carousel-prev',
+      nextEl: '.carousel-next'
+    },
+    pagination: {
+      el: '.carousel-pagination',
+      bulletActiveClass: 'active'
+    }
+  });      
+</script>
+      </code>
+    </pre>
+  <li>
+    <p>完成。</p>
+  </li>
+</ol>
+
+<h2>基础演示</h2>
+<%- demoHTML %>
+<script>
+  galaxy.utils.$$('.demo').forEach(function(demo) {
+    new galaxy.Tabs(demo, {
+      labels: '.demo-label',
+      panels: '.demo-panel',
+      triggerType: 'mousedown',
+      duration: 50
+    });
+  });
+</script>
+
+<h2>接口文档</h2>
+<%- apiHTML %>

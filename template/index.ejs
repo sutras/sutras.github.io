@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>Galaxy文档</title>
+    <style><%- hljsStyle %></style>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="./assets/js/galaxy.js"></script>
+  </head>
+  <body>
+    <script>
+      (function() {
+        var utils = galaxy.utils;
+        var breakpoint = 992;
+        var state = 0;
+        function emitResize() {
+          utils.emit(window, 'resize');
+        }
+        function onBreakpoint() {
+          const currState = window.innerWidth < breakpoint ? -1 : 1;
+          if (state !== currState) {
+            state = currState;
+            if (state === 1) {
+              document.body.classList.add('show', 'large');
+            } else {
+              document.body.classList.remove('show', 'large');
+            }
+
+            this.sidebarShown = state === 1;
+          }
+        }
+        onBreakpoint();
+        utils.on(window, 'resize', onBreakpoint);
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+          utils.on(utils.$('.aside-button'), 'click', function() {
+            document.body.classList.toggle('show');
+            emitResize();
+          });
+          utils.on(utils.$('.mask'), 'click', function() {
+            document.body.classList.remove('show');
+          });
+          utils.on(utils.$('main'), 'transitionend', function() {
+            emitResize();
+          });
+
+        });
+      })();
+    </script>
+
+    <aside>
+      %aside%
+    </aside>
+
+    <main>
+      <span class="aside-button">☰</span>
+
+      <div class="content">
+        <%- include('./main') %>
+      </div>
+    </main>
+
+    <div class="mask"></div>
+
+    <footer></footer>
+  </body>
+</html>
