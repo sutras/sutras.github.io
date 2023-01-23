@@ -1,4 +1,4 @@
-import{R as u}from"./index-71934b06.js";import"./index.es-d84da573.js";import"./index-2e4736b8.js";function s(){return u.createElement("div",{className:"doc-content"},u.createElement("section",{className:"doc-section",dangerouslySetInnerHTML:{__html:`<div class="home">
+import{R as u}from"./index-65cfac6d.js";import"./index.es-977ea490.js";import"./index-2e4736b8.js";function s(){return u.createElement("div",{className:"doc-content"},u.createElement("section",{className:"doc-section",dangerouslySetInnerHTML:{__html:`<div class="home">
   <div class="jumbotron">
     <div class="logo-img">
       <img src="logo.svg" alt="" />
